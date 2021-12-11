@@ -1,0 +1,39 @@
+    <div id="blog-posts" class="grid grid--uniform">
+      {%- for article in blog.articles -%}
+      {%- render 'article-grid-item', article: article, grid_item_width: 'medium-up--one-third', per_row: '3', image_size: section.settings.blog_image_size -%}
+      {%- endfor -%}
+    </div>
+    <div class="loadMoreBtn">
+    <div id="loadMore">Load more ...</div>
+    </div>
+
+    <script> 
+      $(document).ready(function () {
+        var size_li = $("#blog-posts > .grid__item").size();
+        var x=6;
+        $('#blog-posts > .grid__item:lt('+x+')').show();
+        $('#loadMore').click(function () {
+          x= (x+3 <= size_li) ? x+3 : size_li;
+          $('#blog-posts > .grid__item:lt('+x+')').show();
+
+
+          if ( size_li == x ) {
+            $('#loadMore').hide(); 
+          }
+
+        });
+
+      });
+    </script> 
+    
+    
+    
+    <script>
+      jQuery(document).ready(function() {
+        var maxHeight = 0;
+        $("#blog-posts > .grid__item .article__grid-meta").each(function(){
+          if ($(this).height() > maxHeight) { maxHeight = $(this).height()+40; }
+        });
+        $("#blog-posts > .grid__item .article__grid-meta").height(maxHeight);
+      });
+    </script>
