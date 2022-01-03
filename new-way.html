@@ -1,0 +1,26 @@
+//jquery   
+$(".product-block").slice(0, 10).show();
+    if ($(".product-block:hidden").length != 0) {
+      $("#loadMore").show();
+    }   
+    $("#loadMore").on('click', function (e) {
+      e.preventDefault();
+      $(".product-block:hidden").slice(0, 10).slideDown();
+      if ($(".product-block:hidden").length == 0) {
+        $("#loadMore").fadeOut('slow');
+      }
+    });
+
+// button
+   <div class="loadMoreBtn text-center">
+    <div id="loadMore" class="btn btn-main">Load more ...</div>
+    </div>
+
+// grid
+<div>
+  <div class="product-block" style="display:none;">
+  </div>
+</div>
+
+// link: https://www.geeksforgeeks.org/how-to-load-more-feature-using-jquery/
+// https://www.solodev.com/blog/web-design/adding-a-load-more-button-to-your-content.stml
